@@ -1,7 +1,13 @@
-const app = require('./app');
+const express = require('express');
+const ocorrenciasRoutes = require('./routes/ocorrencias_routes');
 
-const PORT = process.env.PORT || 3333;
+const app = express();
 
-app.listen(PORT, () =>  {
-    console.log(`rodando`)
-});
+app.use(express.json());
+
+app.use('/ocorrencias', ocorrenciasRoutes);
+
+app.listen(3333, () => {
+    console.log('Servidor ok!');
+})
+
